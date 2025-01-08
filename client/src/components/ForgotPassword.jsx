@@ -88,7 +88,6 @@ function ForgotPassword() {
 
             const data = await response.json();
 
-
             if (data.success) {
                 toast.success('OTP verified successfully!');
                 setTimeout(() => navigate('/forgot-password/reset-password'), 500);
@@ -104,63 +103,59 @@ function ForgotPassword() {
     };
 
     return (
-        <div>
-            <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center">
-                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg w-full max-w-md">
-                    <h2 className="text-2xl font-extrabold text-center text-purple-600 mb-4">
-                        Forgot Password
-                    </h2>
+        <div className="min-h-screen bg-[#F5EFFF] flex items-center justify-center py-8">
+            <div className="bg-white rounded-xl shadow-xl w-full sm:w-96 p-8">
+                <h2 className="text-2xl font-extrabold text-[#4A4A4A] text-center mb-6">
+                    Forgot Password
+                </h2>
 
-                    {!isOtpSent ? (
-                        <form className="space-y-5" onSubmit={handleSendOtp}>
-                            <div>
-                                <label className="block text-gray-700 font-medium">Email</label>
-                                <input
-                                    type="text"
-                                    value={email}
-                                    onChange={handleEmailChange}
-                                    className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                                    aria-label="Email Address"
-                                />
-                            </div>
+                {/* Conditional rendering of the form */}
+                {!isOtpSent ? (
+                    <form className="space-y-6" onSubmit={handleSendOtp}>
+                        <div>
+                            <label className="block text-[#4A4A4A] font-medium">Email</label>
+                            <input
+                                type="text"
+                                value={email}
+                                onChange={handleEmailChange}
+                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                                placeholder="Enter your email"
+                            />
+                        </div>
 
-                            <button
-                                type="submit"
-                                className={`mt-6 w-full py-2 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'
-                                    } text-white text-lg font-semibold rounded-xl transition duration-300`}
-                                disabled={loading} // Disable the button during loading
-                            >
-                                {loading ? 'Sending...' : 'Send OTP'}
-                            </button>
+                        <button
+                            type="submit"
+                            className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1]'} text-white text-lg font-semibold rounded-lg transition duration-300`}
+                            disabled={loading}
+                        >
+                            {loading ? 'Sending...' : 'Send OTP'}
+                        </button>
+                    </form>
+                ) : (
+                    <form className="space-y-6" onSubmit={handleOtpSubmit}>
+                        <div>
+                            <label className="block text-[#4A4A4A] font-medium">Enter OTP</label>
+                            <input
+                                type="text"
+                                value={otp}
+                                onChange={handleOtpChange}
+                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                                maxLength={6}
+                                placeholder="Enter 6-digit OTP"
+                            />
+                        </div>
 
-                        </form>
-                    ) : (
-                        <form className="space-y-5" onSubmit={handleOtpSubmit}>
-                            <div>
-                                <label className="block text-gray-700 font-medium">Enter OTP</label>
-                                <input
-                                    type="text"
-                                    value={otp}
-                                    onChange={handleOtpChange}
-                                    className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                                    maxLength={6}
-                                    aria-label="Enter OTP"
-                                />
-                            </div>
-
-                            <button
-                                type="submit"
-                                className={`mt-6 w-full py-2 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-purple-600 hover:bg-purple-700'
-                                    } text-white text-lg font-semibold rounded-xl transition duration-300`}
-                                disabled={loading} // Disable the button during loading
-                            >
-                                {loading ? 'Verifying...' : 'Verify OTP'}
-                            </button>
-
-                        </form>
-                    )}
-                </div>
+                        <button
+                            type="submit"
+                            className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1]'} text-white text-lg font-semibold rounded-lg transition duration-300`}
+                            disabled={loading}
+                        >
+                            {loading ? 'Verifying...' : 'Verify OTP'}
+                        </button>
+                    </form>
+                )}
             </div>
+
             <Toaster />
         </div>
     );

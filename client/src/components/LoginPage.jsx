@@ -124,25 +124,25 @@ function LoginPage() {
                         </button>
 
                         <div className="mt-6 text-center">
-    <p className="text-[#4A4A4A]">
-        <span className="mr-1">Don't have an account?</span>
-        <Link 
-            to="/signup" 
-            className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
-        >
-            Sign Up
-        </Link>
-    </p>
-    <p className="text-[#4A4A4A] mt-4">
-        <span className="mr-1">Forgot your password?</span>
-        <Link 
-            to="/forgot-password" 
-            className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
-        >
-            Reset It
-        </Link>
-    </p>
-</div>
+                            <p className="text-[#4A4A4A]">
+                                <span className="mr-1">Don't have an account?</span>
+                                <Link
+                                    to="/signup"
+                                    className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
+                                >
+                                    Sign Up
+                                </Link>
+                            </p>
+                            <p className="text-[#4A4A4A] mt-4">
+                                <span className="mr-1">Forgot your password?</span>
+                                <Link
+                                    to="/forgot-password"
+                                    className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
+                                >
+                                    Reset It
+                                </Link>
+                            </p>
+                        </div>
 
                     </form>
                 </div>
