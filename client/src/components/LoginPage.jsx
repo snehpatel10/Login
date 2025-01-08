@@ -57,68 +57,87 @@ function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center">
-            <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg w-full max-w-md">
-                <h2 className="text-2xl font-extrabold text-center text-purple-600 mb-4">Log In</h2>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                    <div>
-                        <label className="block text-gray-700 font-medium">Email</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+            <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden max-w-5xl">
+                {/* Left Section with Image */}
+                <div className="hidden md:block bg-blue-500 w-full md:w-1/2 flex items-center justify-center p-10">
+                    <div className="text-center">
+                        <img
+                            src="https://via.placeholder.com/300x300"
+                            alt="Login Illustration"
+                            className="mx-auto"
                         />
+                        <h2 className="text-4xl font-bold text-white mt-4">Welcome Back!</h2>
+                        <p className="text-white mt-2">
+                            Please log in to access your account and get started.
+                        </p>
                     </div>
+                </div>
 
-                    <div>
-                        <label className="block text-gray-700 font-medium">Password</label>
-                        <div className="relative">
+                {/* Right Section with Form */}
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-8">
+                    <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Log In</h2>
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                        <div>
+                            <label className="block text-gray-700 font-medium">Email</label>
                             <input
-                                type={showPassword ? 'text' : 'password'}
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                                placeholder="Enter your email"
                             />
-                            {password && (
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
-                                >
-                                    {showPassword ? (
-                                        <HiEyeSlash className="w-6 h-6" />
-                                    ) : (
-                                        <HiEye className="w-6 h-6" />
-                                    )}
-                                </button>
-                            )}
                         </div>
-                    </div>
 
-                    <button
-                        type="submit"
-                        className="w-full py-2 bg-purple-600 text-white text-lg font-semibold rounded-xl hover:bg-purple-700 transition duration-300"
-                    >
-                        Log In
-                    </button>
-                    <div className="mt-3 text-center">
-                        <p className="text-sm text-gray-600">
-                            Don't have an account?{' '}
-                            <Link to="/signup" className="text-purple-600 hover:underline">
-                                Sign Up
-                            </Link>
-                        </p>
-                    </div>
-                    <div className="mt-3 text-center">
-                        <p className="text-sm text-gray-600">
-                            Having trouble logging in?{' '}
-                            <Link to="/forgot-password" className="text-purple-600 hover:underline">
-                                Reset Your Password
-                            </Link>
-                        </p>
-                    </div>
-                </form>
+                        <div>
+                            <label className="block text-gray-700 font-medium">Password</label>
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                                    placeholder="Enter your password"
+                                />
+                                {password && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
+                                    >
+                                        {showPassword ? (
+                                            <HiEyeSlash className="w-6 h-6" />
+                                        ) : (
+                                            <HiEye className="w-6 h-6" />
+                                        )}
+                                    </button>
+                                )}
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="w-full py-3 bg-purple-600 text-white text-lg font-semibold rounded-lg hover:bg-purple-700 transition duration-300"
+                        >
+                            Log In
+                        </button>
+
+                        <div className="mt-4 text-center">
+                            <p className="text-gray-600">
+                                Don't have an account?{' '}
+                                <Link to="/signup" className="text-purple-600 hover:underline">
+                                    Sign Up
+                                </Link>
+                            </p>
+                            <p className="text-gray-600 mt-2">
+                                Forgot your password?{' '}
+                                <Link to="/forgot-password" className="text-purple-600 hover:underline">
+                                    Reset It
+                                </Link>
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
             <Toaster />
         </div>
