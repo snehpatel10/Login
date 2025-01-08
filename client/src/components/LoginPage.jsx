@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { HiEye, HiEyeSlash } from 'react-icons/hi2';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -32,9 +34,7 @@ function LoginPage() {
                 },
             });
 
-            // Check if the response was successful
             if (!result.ok) {
-                // If not, handle the error by showing the login failed message
                 toast.error('Invalid email or password');
                 return;
             }
@@ -73,12 +73,27 @@ function LoginPage() {
 
                     <div>
                         <label className="block text-gray-700 font-medium">Password</label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                            />
+                            {password && (
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
+                                >
+                                    {showPassword ? (
+                                        <HiEyeSlash className="w-6 h-6" />
+                                    ) : (
+                                        <HiEye className="w-6 h-6" />
+                                    )}
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     <button

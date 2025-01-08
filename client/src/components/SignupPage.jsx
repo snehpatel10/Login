@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import { HiEye, HiEyeSlash } from 'react-icons/hi2'; // Eye icons for password toggle
 
 function SignUp() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); // State for toggling password visibility
   const [emailError, setEmailError] = useState('');
   const navigate = useNavigate();
   const emailInputRef = useRef(null); // Reference for email input
@@ -22,7 +23,6 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate form inputs
     if (!name || !email || !password) {
       toast.error('Please fill in all fields');
       return;
@@ -39,12 +39,10 @@ function SignUp() {
 
       result = await result.json();
 
-      // Check if the response indicates failure (email already in use)
       if (result.success === false && result.message === 'Email already in use. Please use a different email.') {
         toast.error('This email is already in use. Please use a different email.');
-        
         setEmail('');
-        setEmailError('Email already in use'); // Set error message for email
+        setEmailError('Email already in use');
         emailInputRef.current.focus();
         return;
       }
@@ -52,10 +50,9 @@ function SignUp() {
       if (result.success) {
         toast.success('Account created successfully');
         localStorage.setItem('user', JSON.stringify(result.user));
-
         setTimeout(() => {
           navigate('/');
-        }, 1000); 
+        }, 1000);
       } else {
         toast.error('Registration failed!');
       }
@@ -69,11 +66,8 @@ function SignUp() {
     <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center">
       <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-extrabold text-center text-purple-600 mb-4">Create an Account</h2>
-        
-        {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        
-        <form onSubmit={handleSubmit} className="space-y-6">
 
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
             <label className="block text-gray-700 font-medium">Name</label>
             <input
@@ -92,21 +86,34 @@ function SignUp() {
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
-                setEmailError(''); // Clear error message when user types
+                setEmailError('');
               }}
-              className={`w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 ${emailError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-purple-500'}`}
+              className={`w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 transition-all duration-300 ${
+                emailError ? 'border-red-500 focus:ring-red-500' : 'border-gray-300 focus:ring-purple-500'
+              }`}
             />
             {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
           </div>
 
           <div>
             <label className="block text-gray-700 font-medium">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+              />
+              {password && (
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? <HiEyeSlash className="w-6 h-6" /> : <HiEye className="w-6 h-6" />}
+                </button>
+              )}
+            </div>
           </div>
 
           <button
@@ -115,7 +122,7 @@ function SignUp() {
           >
             Sign Up
           </button>
-          
+
           <div className="mt-3 text-center">
             <p className="text-sm text-gray-600">
               Already have an account?{' '}
