@@ -61,7 +61,7 @@ function LoginPage() {
         <div className="min-h-screen flex items-center justify-center bg-[#F5EFFF]">
             <div className="flex flex-col md:flex-row bg-[#FFFFFF] rounded-lg shadow-md overflow-hidden max-w-5xl">
                 {/* Left Section with Image */}
-                <div className="hidden md:block bg-[#A294F9] w-full md:w-1/2 flex items-center justify-center p-10">
+                <div className="hidden md:block bg-[#A294F9] w-full md:w-1/2 items-center justify-center p-10">
                     <div className="text-center">
                         <img
                             src={myImage}
