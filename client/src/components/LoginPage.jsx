@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { HiEye, HiEyeSlash } from 'react-icons/hi2';
+import myImage from '../assets/rb_399 (1).svg';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -57,15 +58,15 @@ function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100">
-            <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-xl overflow-hidden max-w-5xl">
+        <div className="min-h-screen flex items-center justify-center bg-[#F5EFFF]">
+            <div className="flex flex-col md:flex-row bg-[#FFFFFF] rounded-lg shadow-md overflow-hidden max-w-5xl">
                 {/* Left Section with Image */}
-                <div className="hidden md:block bg-blue-500 w-full md:w-1/2 flex items-center justify-center p-10">
+                <div className="hidden md:block bg-[#A294F9] w-full md:w-1/2 flex items-center justify-center p-10">
                     <div className="text-center">
                         <img
-                            src="https://via.placeholder.com/300x300"
+                            src={myImage}
                             alt="Login Illustration"
-                            className="mx-auto"
+                            className="w-64 h-auto mx-auto"
                         />
                         <h2 className="text-4xl font-bold text-white mt-4">Welcome Back!</h2>
                         <p className="text-white mt-2">
@@ -75,28 +76,28 @@ function LoginPage() {
                 </div>
 
                 {/* Right Section with Form */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center p-8">
-                    <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">Log In</h2>
+                <div className="w-full md:w-1/2 flex flex-col justify-center p-8 bg-white shadow-lg rounded-lg">
+                    <h2 className="text-3xl font-bold text-[#4A4A4A] text-center mb-6">Log In</h2>
                     <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
-                            <label className="block text-gray-700 font-medium">Email</label>
+                            <label className="block text-[#4A4A4A] font-medium">Email</label>
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
                                 placeholder="Enter your email"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-gray-700 font-medium">Password</label>
+                            <label className="block text-[#4A4A4A] font-medium">Password</label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? 'text' : 'password'}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
+                                    className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
                                     placeholder="Enter your password"
                                 />
                                 {password && (
@@ -117,25 +118,32 @@ function LoginPage() {
 
                         <button
                             type="submit"
-                            className="w-full py-3 bg-purple-600 text-white text-lg font-semibold rounded-lg hover:bg-purple-700 transition duration-300"
+                            className="w-full py-3 bg-[#A294F9] text-white text-lg font-semibold rounded-lg hover:bg-[#8c77e1] transition duration-300"
                         >
                             Log In
                         </button>
 
-                        <div className="mt-4 text-center">
-                            <p className="text-gray-600">
-                                Don't have an account?{' '}
-                                <Link to="/signup" className="text-purple-600 hover:underline">
-                                    Sign Up
-                                </Link>
-                            </p>
-                            <p className="text-gray-600 mt-2">
-                                Forgot your password?{' '}
-                                <Link to="/forgot-password" className="text-purple-600 hover:underline">
-                                    Reset It
-                                </Link>
-                            </p>
-                        </div>
+                        <div className="mt-6 text-center">
+    <p className="text-[#4A4A4A]">
+        <span className="mr-1">Don't have an account?</span>
+        <Link 
+            to="/signup" 
+            className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
+        >
+            Sign Up
+        </Link>
+    </p>
+    <p className="text-[#4A4A4A] mt-4">
+        <span className="mr-1">Forgot your password?</span>
+        <Link 
+            to="/forgot-password" 
+            className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
+        >
+            Reset It
+        </Link>
+    </p>
+</div>
+
                     </form>
                 </div>
             </div>
