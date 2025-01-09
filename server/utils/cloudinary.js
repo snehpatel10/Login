@@ -26,7 +26,7 @@ const uploadOnCloudinary = async (localFilePath) => {
     });
 
     // Log response if successful
-    console.log('File uploaded successfully to Cloudinary:', response);
+//    console.log('File uploaded successfully to Cloudinary:', response);
 
     // Return the Cloudinary response containing image info
     return {
