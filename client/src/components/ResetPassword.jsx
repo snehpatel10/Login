@@ -10,13 +10,9 @@ function ResetPassword() {
 
     const email = localStorage.getItem('userEmail');
 
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-    };
+    const handlePasswordChange = (e) => setPassword(e.target.value);
 
-    const handleConfirmPasswordChange = (e) => {
-        setConfirmPassword(e.target.value);
-    };
+    const handleConfirmPasswordChange = (e) => setConfirmPassword(e.target.value);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,10 +41,10 @@ function ResetPassword() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, password }), // Send the new password to backend
+                body: JSON.stringify({ email, password }),
             });
 
-            const data = await response.json();  // Log response data from backend
+            const data = await response.json();
 
             if (data.success) {
                 toast.success('Password has been successfully reset!');
@@ -61,50 +57,64 @@ function ResetPassword() {
             toast.error('An error occurred while resetting the password. Please try again.');
         } finally {
             setLoading(false);
+            localStorage.removeItem('userEmail');
         }
-        localStorage.removeItem('userEmail');
     };
 
     return (
-        <div className="min-h-screen bg-[#F5EFFF] flex items-center justify-center py-8">
-            <div className="bg-white rounded-xl shadow-lg w-full sm:w-96 p-8">
-                <h2 className="text-3xl font-extrabold text-[#4A4A4A] text-center mb-8">
-                    Reset Your Password
-                </h2>
+        <div
+            className="min-h-screen flex items-center justify-center relative overflow-hidden"
+            style={{
+                backgroundImage:
+                    'radial-gradient(circle at top left, rgba(46, 17, 87, 1) 0%, rgba(58, 30, 85, 1) 25%, rgba(30, 17, 46, 1) 75%, rgba(15, 0, 30, 1) 100%)',
+            }}
+        >
+            {/* Background Glow */}
+            <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-[#BB86FC] to-[#3700B3] blur-3xl opacity-20 rounded-full top-20 left-10"></div>
+            <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-[#03DAC6] to-[#BB86FC] blur-3xl opacity-20 rounded-full bottom-20 right-10"></div>
 
-                <form className="space-y-6" onSubmit={handleSubmit}>
+            {/* Reset Password Form */}
+            <div className="bg-[#121212]/80 backdrop-blur-md rounded-2xl shadow-2xl p-10 max-w-md w-full">
+                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                    Reset Password
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* New Password Input */}
                     <div>
-                        <label className="block text-[#4A4A4A] font-medium">New Password</label>
+                        <label className="block text-[#BB86FC] font-medium">New Password</label>
                         <input
                             type="password"
                             value={password}
                             onChange={handlePasswordChange}
-                            className="w-full p-4 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                            className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                             placeholder="Enter new password"
                         />
                     </div>
 
+                    {/* Confirm Password Input */}
                     <div>
-                        <label className="block text-[#4A4A4A] font-medium">Confirm Password</label>
+                        <label className="block text-[#BB86FC] font-medium">Confirm Password</label>
                         <input
                             type="password"
                             value={confirmPassword}
                             onChange={handleConfirmPasswordChange}
-                            className="w-full p-4 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                            className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                             placeholder="Confirm new password"
                         />
                     </div>
 
+                    {/* Submit Button */}
                     <button
                         type="submit"
-                        className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1] active:bg-[#7b65e0]'} text-white text-lg font-semibold rounded-lg shadow-lg focus:outline-none transition duration-300`}
+                        className={`mt-6 w-full py-3 ${
+                            loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#6e34f0] hover:bg-[#4b1fba]'
+                        } text-white text-lg font-semibold rounded-lg shadow-lg focus:outline-none transition duration-300`}
                         disabled={loading}
                     >
                         {loading ? 'Resetting...' : 'Reset Password'}
                     </button>
                 </form>
             </div>
-
             <Toaster />
         </div>
     );

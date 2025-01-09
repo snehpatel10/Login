@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import { HiEye, HiEyeSlash } from 'react-icons/hi2';
-import myImage from '../assets/rb_399 (1).svg';
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -58,94 +57,92 @@ function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-[#F5EFFF]">
-            <div className="flex flex-col md:flex-row bg-[#FFFFFF] rounded-lg shadow-md overflow-hidden max-w-5xl">
-                {/* Left Section with Image */}
-                <div className="hidden md:block bg-[#A294F9] w-full md:w-1/2 items-center justify-center p-10">
-                    <div className="text-center">
-                        <img
-                            src={myImage}
-                            alt="Login Illustration"
-                            className="w-64 h-auto mx-auto"
+        <div
+            className="min-h-screen flex items-center justify-center relative overflow-hidden"
+            style={{
+                backgroundImage:
+                    'radial-gradient(circle at top left, rgba(46, 17, 87, 1) 0%, rgba(58, 30, 85, 1) 25%, rgba(30, 17, 46, 1) 75%, rgba(15, 0, 30, 1) 100%)',
+            }}
+        >
+            {/* Background Glow */}
+            <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-[#BB86FC] to-[#3700B3] blur-3xl opacity-20 rounded-full top-20 left-10"></div>
+            <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-[#03DAC6] to-[#BB86FC] blur-3xl opacity-20 rounded-full bottom-20 right-10"></div>
+
+            {/* Login Form Container */}
+            <div className="bg-[#121212]/80 backdrop-blur-md rounded-2xl shadow-2xl p-10 max-w-md w-full">
+                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                    Log In
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Email Input */}
+                    <div>
+                        <label className="block text-[#BB86FC] font-medium">Email</label>
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value.toLowerCase())}
+                            className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
+                            placeholder="Enter your email"
                         />
-                        <h2 className="text-4xl font-bold text-white mt-4">Welcome Back!</h2>
-                        <p className="text-white mt-2">
-                            Please log in to access your account and get started.
+                    </div>
+
+                    {/* Password Input */}
+                    <div>
+                        <label className="block text-[#BB86FC] font-medium">Password</label>
+                        <div className="relative">
+                            <input
+                                type={showPassword ? 'text' : 'password'}
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
+                                placeholder="Enter your password"
+                            />
+                            {password && (
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute inset-y-0 right-3 flex items-center justify-center text-[#BB86FC] hover:text-[#FFFFFF]"
+                                >
+                                    {showPassword ? (
+                                        <HiEyeSlash className="w-6 h-6" />
+                                    ) : (
+                                        <HiEye className="w-6 h-6" />
+                                    )}
+                                </button>
+                            )}
+                        </div>
+                        {/* Forgot password? */}
+                        <div className="flex justify-end mt-2">
+                            <Link
+                                to="/forgot-password"
+                                className="text-[#BB86FC] hover:text-[#03DAC6] text-sm"
+                            >
+                                Forgot password?
+                            </Link>
+                        </div>
+                    </div>
+
+                    {/* Submit Button */}
+                    <button
+                        type="submit"
+                        className="w-full py-3 bg-[#6e34f0] text-[#FFFFFF] text-lg font-semibold rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
+                    >
+                        Log In
+                    </button>
+
+                    {/* Footer Links */}
+                    <div className="text-center">
+                        <p className="text-[#BBBBBB]">
+                            Don't have an account?{' '}
+                            <Link
+                                to="/signup"
+                                className="text-[#BB86FC] hover:text-[#03DAC6]"
+                            >
+                                Sign Up
+                            </Link>
                         </p>
                     </div>
-                </div>
-
-                {/* Right Section with Form */}
-                <div className="w-full md:w-1/2 flex flex-col justify-center p-8 bg-white shadow-lg rounded-lg">
-                    <h2 className="text-3xl font-bold text-[#4A4A4A] text-center mb-6">Log In</h2>
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        <div>
-                            <label className="block text-[#4A4A4A] font-medium">Email</label>
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
-                                placeholder="Enter your email"
-                            />
-                        </div>
-
-                        <div>
-                            <label className="block text-[#4A4A4A] font-medium">Password</label>
-                            <div className="relative">
-                                <input
-                                    type={showPassword ? 'text' : 'password'}
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
-                                    placeholder="Enter your password"
-                                />
-                                {password && (
-                                    <button
-                                        type="button"
-                                        onClick={() => setShowPassword(!showPassword)}
-                                        className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
-                                    >
-                                        {showPassword ? (
-                                            <HiEyeSlash className="w-6 h-6" />
-                                        ) : (
-                                            <HiEye className="w-6 h-6" />
-                                        )}
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-
-                        <button
-                            type="submit"
-                            className="w-full py-3 bg-[#A294F9] text-white text-lg font-semibold rounded-lg hover:bg-[#8c77e1] transition duration-300"
-                        >
-                            Log In
-                        </button>
-
-                        <div className="mt-6 text-center">
-                            <p className="text-[#4A4A4A]">
-                                <span className="mr-1">Don't have an account?</span>
-                                <Link
-                                    to="/signup"
-                                    className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
-                                >
-                                    Sign Up
-                                </Link>
-                            </p>
-                            <p className="text-[#4A4A4A] mt-4">
-                                <span className="mr-1">Forgot your password?</span>
-                                <Link
-                                    to="/forgot-password"
-                                    className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-300"
-                                >
-                                    Reset It
-                                </Link>
-                            </p>
-                        </div>
-
-                    </form>
-                </div>
+                </form>
             </div>
             <Toaster />
         </div>

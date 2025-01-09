@@ -64,28 +64,38 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5EFFF] flex items-center justify-center py-4">
-      <div className="bg-white rounded-xl shadow-lg max-w-4xl w-full overflow-hidden flex">
+    <div
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      style={{
+        backgroundImage:
+          'radial-gradient(circle at top left, rgba(46, 17, 87, 1) 0%, rgba(58, 30, 85, 1) 25%, rgba(30, 17, 46, 1) 75%, rgba(15, 0, 30, 1) 100%)',
+      }}
+    >
+      {/* Background Glow */}
+      <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-[#BB86FC] to-[#3700B3] blur-3xl opacity-20 rounded-full top-20 left-10"></div>
+      <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-[#03DAC6] to-[#BB86FC] blur-3xl opacity-20 rounded-full bottom-20 right-10"></div>
+
+      <div className="bg-[#121212]/80 backdrop-blur-md rounded-2xl shadow-2xl w-full max-w-4xl flex">
 
         {/* Left Section with Form */}
-        <div className="w-full md:w-1/2 p-6 bg-[#FFFFFF] flex flex-col justify-center">
-          <h2 className="text-2xl font-semibold text-[#4A4A4A] text-center mb-4">Create Your Account</h2>
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <div className="flex-1 p-6">
+          <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">Create Your Account</h2>
+          <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name Input */}
             <div>
-              <label className="block text-[#4A4A4A] font-medium text-sm">Full Name</label>
+              <label className="block text-[#BB86FC] font-medium">Full Name</label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full p-2 mt-1 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-200"
+                className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                 placeholder="Enter your full name"
               />
             </div>
 
             {/* Email Input */}
             <div>
-              <label className="block text-[#4A4A4A] font-medium text-sm">Email</label>
+              <label className="block text-[#BB86FC] font-medium">Email</label>
               <input
                 ref={emailInputRef}
                 type="email"
@@ -94,9 +104,7 @@ function SignUp() {
                   setEmail(e.target.value);
                   setEmailError('');
                 }}
-                className={`w-full p-2 mt-1 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-200 ${
-                  emailError ? 'border-red-500 focus:ring-red-500' : ''
-                }`}
+                className={`w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all ${emailError ? 'border-red-500 focus:ring-red-500' : ''}`}
                 placeholder="Enter your email"
               />
               {emailError && <p className="text-red-500 text-xs mt-1">{emailError}</p>}
@@ -104,22 +112,22 @@ function SignUp() {
 
             {/* Password Input */}
             <div>
-              <label className="block text-[#4A4A4A] font-medium text-sm">Password</label>
+              <label className="block text-[#BB86FC] font-medium">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-2 mt-1 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-200"
+                  className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                   placeholder="Enter your password"
                 />
                 {password && (
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute inset-y-0 right-3 flex items-center justify-center text-gray-500 hover:text-gray-700"
+                    className="absolute inset-y-0 right-3 flex items-center justify-center text-[#BB86FC] hover:text-[#FFFFFF]"
                   >
-                    {showPassword ? <HiEyeSlash className="w-5 h-5" /> : <HiEye className="w-5 h-5" />}
+                    {showPassword ? <HiEyeSlash className="w-6 h-6" /> : <HiEye className="w-6 h-6" />}
                   </button>
                 )}
               </div>
@@ -128,18 +136,18 @@ function SignUp() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-2 bg-[#A294F9] text-white text-lg font-semibold rounded-lg hover:bg-[#8c77e1] transition duration-200"
+              className="w-full py-3 bg-[#6e34f0] text-[#121212] text-lg font-semibold rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
             >
               Sign Up
             </button>
 
             {/* Existing Account Links */}
-            <div className="mt-5 text-center">
-              <p className="text-[#4A4A4A] text-sm">
+            <div className="text-center">
+              <p className="text-[#BBBBBB]">
                 Already have an account?{' '}
                 <Link
                   to="/login"
-                  className="text-[#A294F9] hover:text-[#7B63E1] font-medium transition-all duration-200"
+                  className="text-[#BB86FC] hover:text-[#03DAC6] underline"
                 >
                   Log In
                 </Link>
@@ -149,7 +157,7 @@ function SignUp() {
         </div>
 
         {/* Right Section with Image */}
-        <div className="w-1/2 p-6 bg-[#A294F9] flex flex-col items-center justify-center text-center">
+        <div className="flex-1 p-6 bg-[#A294F9] flex flex-col items-center justify-center text-center rounded-r-2xl">
           <img
             src={myImage}
             alt="Sign Up Illustration"
@@ -161,6 +169,7 @@ function SignUp() {
           </p>
         </div>
       </div>
+
       <Toaster />
     </div>
   );

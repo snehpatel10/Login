@@ -103,59 +103,73 @@ function ForgotPassword() {
     };
 
     return (
-        <div className="min-h-screen bg-[#F5EFFF] flex items-center justify-center py-8">
-            <div className="bg-white rounded-xl shadow-xl w-full sm:w-96 p-8">
-                <h2 className="text-2xl font-extrabold text-[#4A4A4A] text-center mb-6">
-                    Forgot Password
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-tl from-[#2E1157] via-[#3A1E55] to-[#1E1130]">
+            <div className="w-full max-w-lg bg-[#121212]/80 backdrop-blur-md rounded-xl shadow-2xl p-6">
+                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                    {isOtpSent ? 'Enter OTP' : 'Forgot Password'}
                 </h2>
 
-                {/* Conditional rendering of the form */}
-                {!isOtpSent ? (
-                    <form className="space-y-6" onSubmit={handleSendOtp}>
+                <form onSubmit={isOtpSent ? handleOtpSubmit : handleSendOtp} className="space-y-6">
+                    {!isOtpSent ? (
                         <div>
-                            <label className="block text-[#4A4A4A] font-medium">Email</label>
+                            <label className="block text-[#BB86FC] font-medium">Email</label>
                             <input
                                 type="text"
                                 value={email}
                                 onChange={handleEmailChange}
-                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                                className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                                 placeholder="Enter your email"
                             />
                         </div>
-
-                        <button
-                            type="submit"
-                            className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1]'} text-white text-lg font-semibold rounded-lg transition duration-300`}
-                            disabled={loading}
-                        >
-                            {loading ? 'Sending...' : 'Send OTP'}
-                        </button>
-                    </form>
-                ) : (
-                    <form className="space-y-6" onSubmit={handleOtpSubmit}>
+                    ) : (
                         <div>
-                            <label className="block text-[#4A4A4A] font-medium">Enter OTP</label>
+                            <label className="block text-[#BB86FC] font-medium">Enter OTP</label>
                             <input
                                 type="text"
                                 value={otp}
                                 onChange={handleOtpChange}
-                                className="w-full p-3 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                                className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                                 maxLength={6}
                                 placeholder="Enter 6-digit OTP"
                             />
                         </div>
+                    )}
 
-                        <button
-                            type="submit"
-                            className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1]'} text-white text-lg font-semibold rounded-lg transition duration-300`}
-                            disabled={loading}
-                        >
-                            {loading ? 'Verifying...' : 'Verify OTP'}
-                        </button>
-                    </form>
-                )}
+                    <button
+                        type="submit"
+                        className={`w-full py-3 rounded-lg font-semibold text-lg shadow-lg transition-all flex items-center justify-center ${
+                            loading
+                                ? 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 cursor-not-allowed'
+                                : 'bg-gradient-to-r from-[#6e34f0] to-[#4b1fba] text-[#121212] hover:bg-gradient-to-r hover:from-[#5a2ed3] hover:to-[#3c178a]'
+                        }`}
+                        disabled={loading}
+                    >
+                        {loading && (
+                            <svg
+                                className="animate-spin h-5 w-5 mr-3 text-white"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                                ></path>
+                            </svg>
+                        )}
+                        {loading ? (isOtpSent ? 'Verifying...' : 'Sending...') : isOtpSent ? 'Verify OTP' : 'Send OTP'}
+                    </button>
+                </form>
             </div>
-
             <Toaster />
         </div>
     );
