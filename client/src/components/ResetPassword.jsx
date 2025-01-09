@@ -66,46 +66,45 @@ function ResetPassword() {
     };
 
     return (
-        <div>
-            <div className="min-h-screen bg-gradient-to-r from-purple-500 to-indigo-600 flex items-center justify-center">
-                <div className="bg-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-lg w-full max-w-md">
-                    <h2 className="text-2xl font-extrabold text-center text-purple-600 mb-4">
-                        Reset Password
-                    </h2>
+        <div className="min-h-screen bg-[#F5EFFF] flex items-center justify-center py-8">
+            <div className="bg-white rounded-xl shadow-lg w-full sm:w-96 p-8">
+                <h2 className="text-3xl font-extrabold text-[#4A4A4A] text-center mb-8">
+                    Reset Your Password
+                </h2>
 
-                    <form className="space-y-5" onSubmit={handleSubmit}>
-                        <div>
-                            <label className="block text-gray-700 font-medium">New Password</label>
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={handlePasswordChange}
-                                className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                                aria-label="New Password"
-                            />
-                        </div>
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                    <div>
+                        <label className="block text-[#4A4A4A] font-medium">New Password</label>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={handlePasswordChange}
+                            className="w-full p-4 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                            placeholder="Enter new password"
+                        />
+                    </div>
 
-                        <div>
-                            <label className="block text-gray-700 font-medium">Confirm Password</label>
-                            <input
-                                type="password"
-                                value={confirmPassword}
-                                onChange={handleConfirmPasswordChange}
-                                className="w-full p-3 mt-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300"
-                                aria-label="Confirm Password"
-                            />
-                        </div>
+                    <div>
+                        <label className="block text-[#4A4A4A] font-medium">Confirm Password</label>
+                        <input
+                            type="password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
+                            className="w-full p-4 mt-2 border border-[#CDC1FF] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#A294F9] transition-all duration-300"
+                            placeholder="Confirm new password"
+                        />
+                    </div>
 
-                        <button
-                            type="submit"
-                            className={`mt-6 w-full py-2 ${loading ? 'bg-gray-400' : 'bg-purple-600'} text-white text-lg font-semibold rounded-xl hover:bg-purple-700 transition duration-300`}
-                            disabled={loading}
-                        >
-                            {loading ? 'Resetting...' : 'Reset Password'}
-                        </button>
-                    </form>
-                </div>
+                    <button
+                        type="submit"
+                        className={`mt-6 w-full py-3 ${loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#A294F9] hover:bg-[#8c77e1] active:bg-[#7b65e0]'} text-white text-lg font-semibold rounded-lg shadow-lg focus:outline-none transition duration-300`}
+                        disabled={loading}
+                    >
+                        {loading ? 'Resetting...' : 'Reset Password'}
+                    </button>
+                </form>
             </div>
+
             <Toaster />
         </div>
     );
