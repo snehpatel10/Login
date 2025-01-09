@@ -14,7 +14,7 @@ function HomePage() {
           
 
           {/* Render child routes dynamically using Outlet */}
-          <div className="mt-6">
+          <div className="mt-3">
             <Outlet /> {/* This will render Profile or Account based on routing */}
           </div>
     </div>

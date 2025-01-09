@@ -70,13 +70,13 @@ function LoginPage() {
 
             {/* Login Form Container */}
             <div className="bg-[#121212]/80 backdrop-blur-md rounded-2xl shadow-2xl p-10 max-w-md w-full">
-                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                <h2 className="text-3xl font-extralight text-[#FFFFFF] text-center mb-6">
                     Log In
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* Email Input */}
                     <div>
-                        <label className="block text-[#BB86FC] font-medium">Email</label>
+                        <label className="block text-[#BB86FC] font-normal">Email</label>
                         <input
                             type="email"
                             value={email}
@@ -88,7 +88,7 @@ function LoginPage() {
 
                     {/* Password Input */}
                     <div>
-                        <label className="block text-[#BB86FC] font-medium">Password</label>
+                        <label className="block text-[#BB86FC] font-normal">Password</label>
                         <div className="relative">
                             <input
                                 type={showPassword ? 'text' : 'password'}
@@ -115,7 +115,7 @@ function LoginPage() {
                         <div className="flex justify-end mt-2">
                             <Link
                                 to="/forgot-password"
-                                className="text-[#BB86FC] hover:text-[#03DAC6] text-sm"
+                                className="text-[#BB86FC] hover:text-[#9e53f8] text-sm transition-all duration-150"
                             >
                                 Forgot password?
                             </Link>
@@ -125,18 +125,18 @@ function LoginPage() {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full py-3 bg-[#6e34f0] text-[#FFFFFF] text-lg font-semibold rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
+                        className="w-full py-3 bg-[#6e34f0] text-[#FFFFFF] text-lg font-normal rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
                     >
                         Log In
                     </button>
 
                     {/* Footer Links */}
                     <div className="text-center">
-                        <p className="text-[#BBBBBB]">
+                        <p className="text-[#BBBBBB] font-light">
                             Don't have an account?{' '}
                             <Link
                                 to="/signup"
-                                className="text-[#BB86FC] hover:text-[#03DAC6]"
+                                className="text-[#BB86FC] hover:text-[#9e53f8] transition-all duration-150"
                             >
                                 Sign Up
                             </Link>

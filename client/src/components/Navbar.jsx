@@ -45,7 +45,7 @@ function Navbar() {
   return (
     <nav className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-700 p-4 shadow-lg">
       <div className="flex justify-between items-center max-w-6xl mx-auto">
-        <h1 className="text-2xl font-extrabold text-teal-400">My Dashboard</h1>
+        <h1 className="text-2xl font-extralight text-teal-400">My Dashboard</h1>
         <div className="relative">
           <animated.div
             onClick={toggleDropdown}

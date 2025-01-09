@@ -75,13 +75,13 @@ function ResetPassword() {
 
             {/* Reset Password Form */}
             <div className="bg-[#121212]/80 backdrop-blur-md rounded-2xl shadow-2xl p-10 max-w-md w-full">
-                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                <h2 className="text-3xl font-extralight text-[#FFFFFF] text-center mb-6 tracking-wide">
                     Reset Password
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
                     {/* New Password Input */}
                     <div>
-                        <label className="block text-[#BB86FC] font-medium">New Password</label>
+                        <label className="block text-[#BB86FC] font-normal">New Password</label>
                         <input
                             type="password"
                             value={password}
@@ -93,12 +93,12 @@ function ResetPassword() {
 
                     {/* Confirm Password Input */}
                     <div>
-                        <label className="block text-[#BB86FC] font-medium">Confirm Password</label>
+                        <label className="block text-[#BB86FC] font-normal">Confirm Password</label>
                         <input
                             type="password"
                             value={confirmPassword}
                             onChange={handleConfirmPasswordChange}
-                            className="w-full p-3 mt-2 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
+                            className="w-full p-3 mt-2 mb-4 bg-[#1E1E2F] border-none rounded-lg shadow-md text-white placeholder-gray-400 focus:ring-2 focus:ring-[#BB86FC] transition-all"
                             placeholder="Confirm new password"
                         />
                     </div>
@@ -106,9 +106,9 @@ function ResetPassword() {
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className={`mt-6 w-full py-3 ${
+                        className={`mt-10 w-full py-3 ${
                             loading ? 'bg-gray-400 cursor-not-allowed' : 'bg-[#6e34f0] hover:bg-[#4b1fba]'
-                        } text-white text-lg font-semibold rounded-lg shadow-lg focus:outline-none transition duration-300`}
+                        } text-white text-lg font-normal rounded-lg shadow-lg focus:outline-none transition duration-300`}
                         disabled={loading}
                     >
                         {loading ? 'Resetting...' : 'Reset Password'}

@@ -92,13 +92,13 @@ function Account() {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#1E1E2F] to-[#3A2B4A] min-h-screen py-6 flex justify-center items-center">
+    <div className="bg-gradient-to-r from-[#1E1E2F] to-[#3A2B4A] min-h-screen py-5 flex justify-center items-center">
       {/* Account Settings Card */}
-      <div className="relative w-full max-w-md p-6 sm:p-8 rounded-2xl shadow-lg bg-[#2A2B3C] border-2 border-teal-500">
-        <h2 className="text-3xl font-extrabold text-teal-400 text-center mb-6">Account Settings</h2>
+      <div className="relative w-full max-w-md p-5 sm:p-7 rounded-2xl shadow-lg bg-[#2A2B3C] border-2 font-extralight border-teal-500">
+        <h2 className="text-3xl font-extralight text-teal-400 text-center mb-5">Account Settings</h2>
 
         {/* Profile Picture */}
-        <div className="flex justify-center mb-6">
+        <div className="flex justify-center mb-5">
           <div className="relative w-32 h-32 border-4 border-teal-600 rounded-full overflow-hidden shadow-lg bg-[#333548] transform hover:scale-105 transition duration-300">
             {user.profilePic && typeof user.profilePic === 'string' ? (
               <img
@@ -147,7 +147,7 @@ function Account() {
 
         {/* Full Name Field */}
         <div className="mb-4">
-          <label htmlFor="name" className="block text-md font-medium text-gray-200">
+          <label htmlFor="name" className="block text-md font-light text-gray-200">
             Full Name
           </label>
           {isEditing ? (
@@ -157,16 +157,16 @@ function Account() {
               name="name"
               value={user.name}
               onChange={handleChange}
-              className="mt-2 p-3 w-full border border-teal-500 rounded-lg bg-[#3C3D4A] text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-600 transition duration-200"
+              className="mt-1 p-2 w-full border border-teal-500 rounded-lg bg-[#3C3D4A] text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-600 transition duration-200"
             />
           ) : (
-            <div className="mt-2 text-lg text-gray-200">{user.name}</div>
+            <div className="mt-1 text-lg text-gray-200">{user.name}</div>
           )}
         </div>
 
         {/* Email Address Field */}
-        <div className="mb-6">
-          <label htmlFor="email" className="block text-md font-medium text-gray-200">
+        <div className="mb-5">
+          <label htmlFor="email" className="block text-md font-light text-gray-200">
             Email Address
           </label>
           {isEditing ? (
@@ -176,10 +176,10 @@ function Account() {
               name="email"
               value={user.email}
               onChange={handleChange}
-              className="mt-2 p-3 w-full border border-teal-500 rounded-lg bg-[#3C3D4A] text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-600 transition duration-200"
+              className="mt-1 p-2 w-full border border-teal-500 rounded-lg bg-[#3C3D4A] text-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-600 transition duration-200"
             />
           ) : (
-            <div className="mt-2 text-lg text-gray-200">{user.email}</div>
+            <div className="mt-1 text-lg text-gray-200">{user.email}</div>
           )}
         </div>
 
@@ -189,13 +189,13 @@ function Account() {
             <>
               <button
                 onClick={() => setIsEditing(false)}
-                className="px-5 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700 transition duration-300"
+                className="px-5 py-2 bg-gray-600 text-white font-normal rounded-lg hover:bg-gray-700 transition duration-300"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
-                className={`px-5 py-2 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 transition duration-300 transform active:scale-95 ${
+                className={`px-5 py-2 bg-teal-600 text-white font-normal rounded-lg hover:bg-teal-700 transition duration-300 transform active:scale-95 ${
                   isSaving ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >

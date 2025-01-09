@@ -79,11 +79,11 @@ function SignUp() {
 
         {/* Left Section with Form */}
         <div className="flex-1 p-6">
-          <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">Create Your Account</h2>
+          <h2 className="text-3xl font-extralight text-[#FFFFFF] text-center mb-6 tracking-wide">Create Your Account</h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Full Name Input */}
             <div>
-              <label className="block text-[#BB86FC] font-medium">Full Name</label>
+              <label className="block text-[#BB86FC] font-normal">Full Name</label>
               <input
                 type="text"
                 value={name}
@@ -95,7 +95,7 @@ function SignUp() {
 
             {/* Email Input */}
             <div>
-              <label className="block text-[#BB86FC] font-medium">Email</label>
+              <label className="block text-[#BB86FC] font-normal">Email</label>
               <input
                 ref={emailInputRef}
                 type="email"
@@ -112,7 +112,7 @@ function SignUp() {
 
             {/* Password Input */}
             <div>
-              <label className="block text-[#BB86FC] font-medium">Password</label>
+              <label className="block text-[#BB86FC] font-normal">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? 'text' : 'password'}
@@ -136,18 +136,18 @@ function SignUp() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-3 bg-[#6e34f0] text-[#121212] text-lg font-semibold rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
+              className="w-full py-3 bg-[#6e34f0] text-[#FFFFFF] text-lg font-normal rounded-lg shadow-lg hover:bg-[#4b1fba] transition-all"
             >
               Sign Up
             </button>
 
             {/* Existing Account Links */}
             <div className="text-center">
-              <p className="text-[#BBBBBB]">
+              <p className="text-[#BBBBBB] font-light">
                 Already have an account?{' '}
                 <Link
                   to="/login"
-                  className="text-[#BB86FC] hover:text-[#03DAC6] underline"
+                  className="text-[#BB86FC] hover:text-[#9e53f8] transition-all duration-150"
                 >
                   Log In
                 </Link>
@@ -163,8 +163,8 @@ function SignUp() {
             alt="Sign Up Illustration"
             className="w-48 h-auto mb-3"
           />
-          <h2 className="text-3xl font-extrabold text-white mt-3">Join Us Now!</h2>
-          <p className="text-white mt-2 text-sm">
+          <h2 className="text-3xl font-light text-white mt-3">Join Us Now!</h2>
+          <p className="text-white mt-2 text-sm font-extralight tracking-wide">
             Sign up to start your journey with us. Experience the best of everything!
           </p>
         </div>

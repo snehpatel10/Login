@@ -105,14 +105,14 @@ function ForgotPassword() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-tl from-[#2E1157] via-[#3A1E55] to-[#1E1130]">
             <div className="w-full max-w-lg bg-[#121212]/80 backdrop-blur-md rounded-xl shadow-2xl p-6">
-                <h2 className="text-3xl font-semibold text-[#FFFFFF] text-center mb-6">
+                <h2 className="text-3xl font-extralight text-[#FFFFFF] text-center mb-6 tracking-wide">
                     {isOtpSent ? 'Enter OTP' : 'Forgot Password'}
                 </h2>
 
                 <form onSubmit={isOtpSent ? handleOtpSubmit : handleSendOtp} className="space-y-6">
                     {!isOtpSent ? (
                         <div>
-                            <label className="block text-[#BB86FC] font-medium">Email</label>
+                            <label className="block text-[#BB86FC] font-normal">Email</label>
                             <input
                                 type="text"
                                 value={email}
@@ -123,7 +123,7 @@ function ForgotPassword() {
                         </div>
                     ) : (
                         <div>
-                            <label className="block text-[#BB86FC] font-medium">Enter OTP</label>
+                            <label className="block text-[#BB86FC] font-normal">Enter OTP</label>
                             <input
                                 type="text"
                                 value={otp}
@@ -137,10 +137,10 @@ function ForgotPassword() {
 
                     <button
                         type="submit"
-                        className={`w-full py-3 rounded-lg font-semibold text-lg shadow-lg transition-all flex items-center justify-center ${
+                        className={`w-full py-3 rounded-lg font-normal text-lg shadow-lg transition-all flex items-center justify-center ${
                             loading
                                 ? 'bg-gradient-to-r from-gray-600 to-gray-800 text-gray-300 cursor-not-allowed'
-                                : 'bg-gradient-to-r from-[#6e34f0] to-[#4b1fba] text-[#121212] hover:bg-gradient-to-r hover:from-[#5a2ed3] hover:to-[#3c178a]'
+                                : 'bg-gradient-to-r from-[#6e34f0] to-[#4b1fba] text-[#FFFFFF] hover:bg-gradient-to-r hover:from-[#5a2ed3] hover:to-[#3c178a]'
                         }`}
                         disabled={loading}
                     >
